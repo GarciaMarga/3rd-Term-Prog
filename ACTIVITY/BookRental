@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+
+public class ElectronicBookRentalSystem {
+    public static void main(String[] args) {
+       
+        String[] name = {"System Analysis and Design","Android Application","Programming Concepts and Logic Formula"};
+        String[] author = {"Gary B. Shelly","Corinne Hoisington","Rosauro E. Manuel"};
+        String[] booktitleStrings = {"The Lord of the Rings"};
+        String[] bookauStrings = {"J.R.R. Tolkien"};
+        String[] Bookname = {"Pinocchio"};
+        String[] bookAuthoStrings = {"Carlo Collodi"};
+        int[] copy = {2,3,4};
+
+        System.out.println("MARGA'S ELECTRONIC BOOK RENTAL SYSTEM");
+        System.out.println("*******************************");
+        System.out.println("0. System Analyst and Design by Gary B. Shelly");
+        System.out.println("1. Android Application by Corinne Hoisington");
+        System.out.println("2. Programming Concepts and Logic Formulation by Rosauro E. Manuel");
+        System.out.println("3. The Lord of the Rings by J.R.R. Tolkien");
+        System.out.println("4. Pinocchio by Carlo Collodi");
+        System.out.println("*******************************");
+
+        for(int x =0 ; x<name.length;x++)
+        {
+            System.out.print(x);
+            System.out.print(""+name[x] + "," +author[x],""+booktitleStrings[x] + "," +bookauStrings[x],""+Bookname[x] + "," +bookAuthoStrings[x]);
+            System.out.println();
+        }
+
+        try (Scanner sc = new Scanner(System.in)) {
+            boolean end = false;
+
+            while (end==false)
+            {
+                System.out.println("CHOOSE A NUMBER TO RENT A BOOK");
+                int choice = sc.nextInt();
+                try {
+                    if(copy[choice]>0)
+                    {
+                        System.out.println("YOU RENTED : " + name[choice]);
+                        copy[choice] -=1;
+                    }
+                    else {
+                        System.out.println("NO COPIES AVAILABLE");
+                    }
+                    if(copy[choice]>1)
+                    {
+                        System.out.println("YOU RENTED : " + name[choice]);
+                        copy[choice] +=1;
+                    }
+                    else {
+                        System.out.println("ONE COPY AVAILABLE");
+                    }
+                    if(copy[choice]>2)
+                    {
+                        System.out.println("YOU RENTED : " + name[choice]);
+                        copy[choice] -=3;
+                    }
+                    else {
+                        System.out.println("NO COPIES AVAILABLE");
+                    }
+                    if(copy[choice]>3)
+                    {
+                        System.out.println("YOU RENTED : " + name[choice]);
+                        copy[choice] -=4;
+                    }
+                    else {
+                        System.out.println("NO COPIES AVAILABLE");
+                    }
+
+                    System.out.println("RENT AGAIN ? Y/n");
+                    String c = sc.next();
+                    if(!c.equals("Y"))
+                    {
+                        end= true;
+                    }
+                }
+                    catch(IndexOutOfBoundsException ex)
+                {
+                    System.out.println("INVALID CHOICE");
+                }
+            }
+        }
+    }
+}
